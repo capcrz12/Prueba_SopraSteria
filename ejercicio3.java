@@ -6,7 +6,14 @@ public class CalculoSalario {
         Scanner scanner = new Scanner(System.in);
 
         System.out.print("Introduce la tarifa por hora: ");
-        double tarifa = scanner.nextInt();
+        double tarifa = scanner.nextDouble();
+
+        while (tarifa < 0) {
+            System.out.println("Tarifa incorrecta. Introduce un número positivo.");
+            tarifa = scanner.nextDouble();
+        }
+
+        scanner.close();
 
         return tarifa;
     }
@@ -16,6 +23,13 @@ public class CalculoSalario {
 
         System.out.print("Introduce las horas trabajadas: ");
         int horas = scanner.nextInt();
+
+        while (horas < 0) {
+            System.out.println("Horas incorrectas. Introduce un número positivo.");
+            horas = scanner.nextInt();
+        }
+
+        scanner.close();
 
         return horas;
     }
