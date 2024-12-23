@@ -11,21 +11,37 @@ class Persona {
 }
 
 public class Main {
+    private static final int NUM_PERSONAS = 50;
+
 
     public static Persona[] leerPersonas () {
         Scanner scanner = new Scanner(System.in);
 
-        Persona[] personas = new Persona[50];
+        Persona[] personas = new Persona[NUM_PERSONAS];
 
-        for (int i = 0; i < 50; i++) {
+        for (int i = 0; i < NUM_PERSONAS; i++) {
             System.out.println("Introduce los datos de la persona " + (i + 1) + ": ");
             System.out.print("Sexo (M/F): ");
+            
             String sexo = scanner.next();
+
+            while (!sexo.equals("M") && !sexo.equals("F")) {
+                System.out.println("Sexo incorrecto. Introduce 'M' o 'F'.");
+                sexo = scanner.next();
+            }
+
             System.out.print("Edad: "); 
             int edad = scanner.nextInt();
 
+            while (edad < 0) {
+                System.out.println("Edad incorrecta. Introduce un número positivo.");
+                edad = scanner.nextInt();
+            }
+
             personas[i] = new Persona(sexo, edad);
         }
+
+        scanner.close();
 
         return personas;
     }
@@ -41,7 +57,7 @@ public class Main {
 
         Persona[] personas = leerPersonas();
 
-        for (int i = 0; i < 50; i++ ) {
+        for (int i = 0; i < NUM_PERSONAS; i++ ) {
             Persona persona = personas[i];
 
             if (persona.edad >= 18) {
