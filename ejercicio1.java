@@ -6,7 +6,9 @@ public class ParImpar {
         Scanner scanner = new Scanner(System.in);
 
         System.out.print("Introduce un número: ");
-        numero = scanner.nextInt();
+        int numero = scanner.nextInt();
+
+        scanner.close();
 
         return numero;
     }
